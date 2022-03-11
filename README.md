@@ -27,6 +27,7 @@ Currently hosted as a docker containt on a Google Cloud App Engine instance: htt
 
 <br/>
 This project took roughly 30 hours of free time to complete for the following reasons:
+
 <ul>
   <li>I had really only used bootstrap 4 before and this was a project I used to learn Material UI better from setting up the overall layout all the way down to small components.</li>
   <li>I had not had to setup an API from scratch.</li>
