@@ -5,7 +5,7 @@ Play the original version at: https://www.nytimes.com/games/wordle/index.html
 
 Currently hosted as a docker containt on a Google Cloud App Engine instance: https://swerdle.ue.r.appspot.com/.
 
-*Absolutely no monetization is made off of the hosted version, it is just for demo purposes*
+*Absolutely no monetization is made off of the hosted version, it is just for demo purposes. Word lists have been cached as local text files and were provided by <a href="https://gist.github.com/cfreshman">cfreshman</a>*
 
 <ul>
   <li>Used Create-React-App to generate a basic React template using TypeScript</li>
