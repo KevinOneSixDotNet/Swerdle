@@ -24,3 +24,10 @@ Currently hosted as a docker containt on a Google Cloud App Engine instance: htt
   <li>Only hosting on lowest tier of Google Cloud App Engine, no remote builds are being done and no CI/CD is configured for this project.</li>
   <li>All components are functional components using the React.State hooks as a data store. Local storage is used to persist the app state between page refreshes.</li>
 </ul>
+
+This project took roughly 30 hours of free time to complete for the following reasons:
+<ul>
+  <li>I had really only used bootstrap 4 before and this was a project I used to learn Material UI better from setting up the overall layout all the way down to small components.</li>
+  <li>I had not had to setup an API from scratch.</li>
+  <li>I had never deployed an ASP NET CORE app to production.</li>
+</ul>
