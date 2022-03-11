@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.4.2",
+    "@mui/material": "^5.4.2",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^13.5.0",
@@ -17,10 +21,15 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "startKestral": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "startApiDev": "dotnet run --environment=Development --project '../../swerdleapi'",
+    "startApiProd": "dotnet run --environment=Production --project '../../swerdleapi'",
+    "publish": "dotnet publish '../../swerdleapi' -c Release",
+    "deploy": "gcloud app deploy ../bin/Release/net6.0/publish/app.yaml",
+    "createDockerImage": "docker build -t swerdle ../bin/Release/net6.0/publish/."
   },
   "eslintConfig": {
     "extends": [
