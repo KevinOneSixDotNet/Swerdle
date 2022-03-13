@@ -92,15 +92,6 @@ export default function Body() {
             setGameState(sessionObj.gameState);
        });
     }, [loadMarker]);
-
-    let windowHeight = window.outerHeight;
-    let spacing =  windowHeight < 700 ? 1 : 2.75;
-    spacing = windowHeight < 755 ? spacing : 5;
-    spacing = windowHeight < 795 ? spacing : 5.5;
-    spacing = windowHeight < 855 ? spacing : 7;
-    spacing = windowHeight < 899 ? spacing : 7.5;
-    spacing = windowHeight < 1100 ? spacing : 5;
-
     return (
         <>
             <Dialog sx={{marginTop: "-20vh"}} open={gameState !== GameState.InProgress && gameState !== GameState.Settings && gameState !== GameState.Help}>
@@ -152,7 +143,8 @@ export default function Body() {
                     </Grid> 
                 </DialogContent>
             </Dialog>
-            <Stack direction="column" spacing={{xs: spacing, sm: 3, md:2, lg: 1.25}} justifyContent="space-between">
+            <Stack height={"calc(100vh - " + (window.outerHeight - document.documentElement.clientHeight).toString() + "px - 25px)"} 
+                spacing={{xs: 0, sm: .5, md: 1}} direction="column" justifyContent="space-between">
                 <StackRow sx={{padding: 0}}>
                     <NavBar clickHandler={() => {
                         setPreviousGameState(gameState);

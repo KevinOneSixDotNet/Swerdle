@@ -21,11 +21,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "startKestral": "react-scripts start",
+    "startReact": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "startApiDev": "dotnet run --environment=Development --project '../../swerdleapi'",
+    "startApiDevExternal": "dotnet run --environment=Development --project '../../swerdleapi' --urls 'https://192.168.1.153:7159'",
     "startApiProd": "dotnet run --environment=Production --project '../../swerdleapi'",
     "publish": "dotnet publish '../../swerdleapi' -c Release",
     "deploy": "gcloud app deploy ../bin/Release/net6.0/publish/app.yaml",
