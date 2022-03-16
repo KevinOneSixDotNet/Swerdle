@@ -4,7 +4,7 @@ React/.NET 6 Clone of Popular Online Daily Puzzle Game
 
 Play the original version at: https://www.nytimes.com/games/wordle/index.html
 
-Currently hosted as a docker container on a Google Cloud App Engine instance: <a href="https://swerdle.ue.r.appspot.com">Demo</a>
+Currently hosted as a docker container on a Google Cloud App Engine instance: <a target="_blank" href="https://swerdle.ue.r.appspot.com">Demo</a>
 
 _Absolutely no monetization is made off of the hosted version, it is just for demo purposes. Word lists have been cached as local text files and were provided by <a href="https://gist.github.com/cfreshman">cfreshman</a>_
 
