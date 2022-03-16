@@ -104,9 +104,11 @@ export default function Body() {
                     }
                     {gameState === GameState.Won && 
                         <>
-                            <DialogContentText>
-                                <Typography variant="h4">You Win!</Typography>
-                            </DialogContentText>
+                            <Grid container justifyContent="center"> 
+                                <DialogContentText>
+                                    <Typography variant="h5">You Win!</Typography>
+                                </DialogContentText>
+                            </Grid>
                             <br/>
                             <Grid container justifyContent="center">
                                 <Button variant="contained" color="success" onClick={() => {reset();}}>New Game</Button>
@@ -115,9 +117,11 @@ export default function Body() {
                     }
                     {gameState === GameState.Lost && 
                         <>
-                            <DialogContentText>
-                                <Typography variant="h4">{correctWord.toUpperCase()}</Typography>
-                            </DialogContentText>
+                            <Grid container justifyContent="center">
+                                <DialogContentText>
+                                    <Typography variant="h5">{correctWord.toUpperCase()}</Typography>
+                                </DialogContentText>
+                            </Grid>
                             <br/>
                             <Grid container justifyContent="center">
                                 <Button variant="contained" color="success" onClick={() => {reset();}}>New Game</Button>
