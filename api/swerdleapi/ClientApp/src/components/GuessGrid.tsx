@@ -9,11 +9,6 @@ export interface GuessGridProps {
 };
 
 export default function GuessGrid(props: GuessGridProps){
-    // let windowHeight = window.innerHeight;
-    // let spacing = windowHeight < 700 ? 1.75 : 2.25;
-    // spacing = windowHeight < 745 ? spacing : 2.5;
-    // spacing = windowHeight < 850 ? spacing : 2.75;
-
     let currentGuessIndex = props.guesses.filter((guess: Guess) => { return guess.isCommitted }).length;
 
     return (

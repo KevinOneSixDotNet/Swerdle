@@ -5,7 +5,8 @@ import Toolbar from '@mui/material/Toolbar/Toolbar';
 import Typography from '@mui/material/Typography/Typography';
 
 export interface NavProps {
-    clickHandler: Function;
+    helpClickHandler: Function;
+    settingsClickHandler: Function;
 }
 
 export default function NavBar(props: NavProps) {
@@ -13,11 +14,11 @@ export default function NavBar(props: NavProps) {
         <div>
         <AppBar position="relative" sx={{backgroundColor: "#787c7e"}}>
             <Toolbar sx={{justifyContent:"space-between"}} >
-                <HelpIcon/>
+                <HelpIcon onClick={() => { props.helpClickHandler();}}/>
                 <Typography color="inherit" variant="h4">
                     SWERDLE
                 </Typography>
-                <SettingsIcon onClick={() => { props.clickHandler();}}/>
+                <SettingsIcon onClick={() => { props.settingsClickHandler();}}/>
             </Toolbar>
         </AppBar>
         </div>

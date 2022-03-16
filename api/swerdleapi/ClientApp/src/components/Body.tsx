@@ -10,7 +10,7 @@ import CircularProgress from "@mui/material/CircularProgress/CircularProgress";
 import DialogContentText from "@mui/material/DialogContentText/DialogContentText";
 import Typography from "@mui/material/Typography/Typography";
 import Stack from "@mui/material/Stack/Stack";
-import { getEmptyGuessState, loadFromStorage, saveToStorage, StorageObj } from "../utils/statePersistence";
+import { getEmptyGuessState, loadFromStorage, resetKeyboardCursor, saveToStorage, StorageObj } from "../utils/statePersistence";
 import Button from "@mui/material/Button/Button";
 import Grid from "@mui/material/Grid/Grid";
 import NavBar from '../components/NavBar';
@@ -34,6 +34,7 @@ export default function Body() {
     const [correctWord, setCorrectWord] = React.useState("");
     const [saveMarker, setSaveMarker] = React.useState(0);
     const [loadMarker, setLoadMarker] = React.useState(0);
+    const [resetKey, setResetKey] = React.useState(0);
 
     const saveState = () => {
         saveToStorage({
@@ -51,6 +52,8 @@ export default function Body() {
         setCorrectWord("");
         setSaveMarker(saveMarker + 1);
         setLoadMarker(loadMarker + 1);
+        setResetKey(resetKey + 1);
+        resetKeyboardCursor();
     };
 
     const updateGuesses = (newValue: string) => {
@@ -113,7 +116,7 @@ export default function Body() {
                     {gameState === GameState.Lost && 
                         <>
                             <DialogContentText>
-                                <Typography variant="h6">{correctWord.toUpperCase()}</Typography>
+                                <Typography variant="h4">{correctWord.toUpperCase()}</Typography>
                             </DialogContentText>
                             <br/>
                             <Grid container justifyContent="center">
@@ -138,15 +141,40 @@ export default function Body() {
                     </IconButton>
                 </DialogTitle>
                 <DialogContent>
+                    <Typography sx={{marginBottom: "5px", marginTop:"10px"}}>Begin New Game:</Typography>
                     <Grid container justifyContent="center">
-                        <Button variant="contained" color="success" onClick={() => {reset();}}>New Game</Button>
+                        <Button variant="contained" color="success" onClick={() => {reset();}}>Reset</Button>
                     </Grid> 
                 </DialogContent>
             </Dialog>
-            <Stack height={"calc(100vh - " + (window.outerHeight - document.documentElement.clientHeight).toString() + "px - 25px)"} 
+            <Dialog open={gameState === GameState.Help}>
+                <DialogTitle sx={{ m: 0, p: 2 }}>
+                    Help
+                    <IconButton aria-label="close"
+                        onClick={() => { setGameState(previousGameState); }}
+                        sx={{
+                          position: 'absolute',
+                          right: 8,
+                          top: 12,
+                          color: "#000"
+                        }}>
+                        <CloseIcon />
+                    </IconButton>
+                </DialogTitle>
+                <DialogContent>
+                    <Typography>Wordle clone by <a target="_blank" href="https://github.com/KevinOneSixDotNet/swerdle">Kevin Menegay</a> <b>-</b> Play the <a target="_blank" href="https://www.nytimes.com/games/wordle/index.html">original</a></Typography>
+                    <br/>
+                    <Typography><i>You can begin a new game under the settings menu</i></Typography>
+                </DialogContent>
+            </Dialog>
+            <Stack height={"calc(100vh - " + (window.outerHeight - window.innerHeight).toString() + "px - 25px)"} 
                 spacing={{xs: 0, sm: .5, md: 1}} direction="column" justifyContent="space-between">
                 <StackRow sx={{padding: 0}}>
-                    <NavBar clickHandler={() => {
+                    <NavBar helpClickHandler={() => {
+                        setPreviousGameState(gameState);
+                        setGameState(GameState.Help);
+                    }}
+                    settingsClickHandler={() => {
                         setPreviousGameState(gameState);
                         setGameState(GameState.Settings);
                     }}/>
@@ -156,6 +184,7 @@ export default function Body() {
                 </StackRow>
                 <StackRow>
                     <Keyboard currentGuess={guesses[currentGuessIndex]} 
+                        resetKey={resetKey}
                         guessList={guesses} 
                         updateCurrentGuess={updateGuesses} 
                         commitGuess={commitGuessToGrid}

@@ -15,8 +15,9 @@ export interface KeyboardProps {
     currentGuess: Guess,
     guessList: Guess[],
     updateCurrentGuess: Function,
-    commitGuess: Function
-    correctWord: string
+    commitGuess: Function,
+    correctWord: string,
+    resetKey: number
 }
 
 export default function Keyboard(props: KeyboardProps){
@@ -37,7 +38,7 @@ export default function Keyboard(props: KeyboardProps){
             let storedKeyboardCursorObj = JSON.parse(storedKeyboardCursor) as number;
             setCurrentGuessIndex(storedKeyboardCursorObj)
         }
-    }, [])
+    }, [props.resetKey])
 
     const replaceAt = (base: string, index:number, replacement: string) => {
         return base.substr(0, index) + replacement + base.substr(index + replacement.length);

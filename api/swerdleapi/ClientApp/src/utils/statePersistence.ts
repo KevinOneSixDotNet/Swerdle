@@ -47,3 +47,9 @@ export function saveToStorage(obj: StorageObj){
 
     localStorage.setItem("swerdlesession", session);
 }
+
+export function resetKeyboardCursor(){
+    let cursor = JSON.stringify(0);
+
+    localStorage.setItem("swerdlekeyboard", cursor);
+}
