@@ -32,5 +32,5 @@ This project took roughly 30 hours of free time to complete for the following re
 <ul>
   <li>I had really only used bootstrap 4 before and this was a project I used to learn Material UI better from setting up the overall layout all the way down to small components.</li>
   <li>I had not had to setup an API from scratch.</li>
-  <li>I had never deployed an ASP NET CORE app to production.</li>
+  <li>I had never deployed an ASP NET CORE app to production on Google Cloud.</li>
 </ul>
